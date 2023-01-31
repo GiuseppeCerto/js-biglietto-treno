@@ -43,31 +43,36 @@ const totPriceTicket = document.getElementById('totalprice')
 
 totPriceTicket.innerHTML = totPrice
 
+
 // applicare sconto in caso di minore eta o ultra 65
 let discountedPrice
 
+if (ageClient > 65) {
+    (discountedPrice = totPrice * 0.6).toFixed(2)
+}
+
+if (ageClient < 18) {
+    (discountedPrice = totPrice * 0.8).toFixed(2)
+}
+
 const discountedPriceTicket = document.getElementById('pricediscounted')
 
-discountedPriceTicket.innerHTML = discountedPriceTicket
+discountedPriceTicket.innerHTML = discountedPrice
 
 let discountOver65 = '40%'
 
 const discountTicket65 = document.getElementById('discount')
 
-discountTicket65.innerHTML = discountTicket65
+if (ageClient > 65) {
+    discountTicket65.innerHTML = discountOver65 
+}
 
 let discountUnderage = '20%'
 
 const discountTicket18 = document.getElementById('discount')
 
-discountTicket18.innerHTML = discountTicket18
-
-if (ageClient > 65) {
-    console.log(discountedPrice = totPrice * 0.6)
-}
-
 if (ageClient < 18) {
-    console.log(discountedPrice = totPrice * 0.8)
+    discountTicket18.innerHTML = discountUnderage
 }
 
 // calcolare prezzo totale (km x 0,21 - % sconto ) senza numeri decimali infiniti ma solo con euro e centesimi
